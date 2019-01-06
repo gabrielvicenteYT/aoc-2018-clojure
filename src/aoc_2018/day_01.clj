@@ -2,3 +2,14 @@
 
 (defn part-1 [in]
   (reduce + (map read-string in)))
+
+(defn part-2 [in]
+  (loop [coll (cycle (map read-string in))
+         current 0
+         seen #{}]
+    (if (contains? seen current)
+      current
+      (recur
+       (rest coll)
+       (+ current (first coll))
+       (conj seen current)))))
