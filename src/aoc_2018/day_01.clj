@@ -7,7 +7,7 @@
   (loop [coll (cycle (map read-string in))
          current 0
          seen #{}]
-    (if (contains? seen current)
+    (if (seen current)
       current
       (recur
        (rest coll)
