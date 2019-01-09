@@ -10,7 +10,7 @@
    (filter (fn [[_ v]] (< 1 v)))
    count))
 
-(defn intersect [a b]
+(defn- intersect [a b]
   (and (not= a b)
        (<= (:x b) (+ (:x a) (:w a)))
        (<= (:y b) (+ (:y a) (:h a)))
