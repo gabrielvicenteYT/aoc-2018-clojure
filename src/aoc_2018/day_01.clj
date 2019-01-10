@@ -4,12 +4,10 @@
   (reduce + (map read-string in)))
 
 (defn part-2 [in]
-  (loop [coll (cycle (map read-string in))
-         current 0
-         seen #{}]
-    (if (seen current)
-      current
-      (recur
-       (rest coll)
-       (+ current (first coll))
-       (conj seen current)))))
+  (reduce
+   (fn [[curr seen] val]
+     (if (seen curr)
+       (reduced curr)
+       [(+ curr val) (conj seen curr)]))
+   [0 #{}]
+   (cycle (map read-string in))))
